@@ -6,4 +6,16 @@
 
   <color name="gray_color">#666666</color>
   <color name="red_color">#cc0000</color>
+
+  <!--Theming-->
+  <color name="textColorPrimary">#0f0f0f</color>
+  <color name="textColorSecondary">#ffffff</color>
+  <color name="textColorTertiary">@color/gray_color</color>
+  <color name="textColorAccent">@color/red_color</color>
+
+
+
+
+
+
 </resources>

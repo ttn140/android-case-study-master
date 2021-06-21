@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".ui.DealItemFragment">
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
-    <!--ImageView of the item-->
-<!--    price with "regular" price beside it-->
-    <!--Title of item-->
-    <!--product description-->
-    <!--Put the item in a scroll view-->
-    <!--Bottom sticky buttons scroll behind add to list add to cart-->
-  </androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DealItemFragment">
+    <include layout="@layout/fragment_deal_item_buttonbar"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/buttons"/>
+    <include layout="@layout/fragment_deal_item_information"
+        android:id="@+id/info"
+        />
 
 
-</FrameLayout>
+
+
+        <!--Bottom sticky buttons scroll behind add to list add to cart-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

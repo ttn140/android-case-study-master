@@ -1,9 +1,6 @@
 <resources>
   <string name="app_name">TargetCaseStudy</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
-
   <!-- Credit card validation strings. You do not need to make changes here. -->
   <string name="credit_card_payment_title">Credit Card Payment</string>
   <string name="credit_card_payment_subtitle">Note: you do NOT need to enter real data</string>
@@ -12,8 +9,14 @@
   <string name="credit_card_number_hint">Credit card number</string>
   <string name="add_to_list">add to list</string>
   <string name="add_to_cart">add to cart</string>
-  <string name="reg">Reg: %1s</string>
+  <string name="reg">Reg: <strike>%1s</strike></string>
   <string name="price">$%1s</string>
   <string name="ship">ship</string>
   <string name="or">or</string>
+
+  <!--Network Strings-->
+  <string name="baseurl">"https://api.target.com/mobile_case_study_deals/v1/deals"</string>
+
+  <!--Accessibility Strings-->
+  <string name="content_description">A picture of this item.</string>
 </resources>

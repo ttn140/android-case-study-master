@@ -18,4 +18,8 @@
     </activity>
   </application>
 
+  <!--Permissions-->
+  <!--This permission allows us to access the internet in order to get the latest deals-->
+  <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

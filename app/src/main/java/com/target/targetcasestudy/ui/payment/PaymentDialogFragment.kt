@@ -2,14 +2,18 @@ package com.target.targetcasestudy.ui.payment
 
 import android.os.Bundle
 import android.service.autofill.Validators
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.snackbar.Snackbar
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.data.validateCreditCard
+import com.target.targetcasestudy.databinding.DialogPaymentBinding
 
 /**
  * Dialog that displays a minimal credit card entry form.
@@ -25,26 +29,49 @@ import com.target.targetcasestudy.data.validateCreditCard
  */
 class PaymentDialogFragment : DialogFragment() {
 
+  private lateinit var viewBinding: DialogPaymentBinding
   private lateinit var submitButton: Button
   private lateinit var creditCardInput: EditText
+  private lateinit var cancelButton: Button
 
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View? {
-    val root = inflater.inflate(R.layout.dialog_payment, container, false)
+  ): View {
+    viewBinding = DialogPaymentBinding.inflate(inflater)
+    return viewBinding.root
+  }
 
-    submitButton = root.findViewById(R.id.submit)
-    creditCardInput = root.findViewById(R.id.card_number)
-    val cancelButton: Button = root.findViewById(R.id.cancel)
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    setupView()
+  }
+
+  private fun setupView() {
+    with(viewBinding) {
+      submitButton = submit
+      creditCardInput = cardNumber
+      cancelButton = cancel
+    }
 
     cancelButton.setOnClickListener { dismiss() }
-    submitButton.setOnClickListener { dismiss() }
+    submitButton.setOnClickListener { dismiss() }/*TODO snackbar validation*/
+    creditCardInput.addTextChangedListener(creditCardTextWatcher)
+  }
 
-    // TODO enable the submit button based on card number validity using Validators.validateCreditCard()
-    submitButton.isEnabled = validateCreditCard(creditCardInput.text.toString())
+  private val creditCardTextWatcher = object: TextWatcher {
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+    }
 
-    return root
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+    }
+
+    override fun afterTextChanged(creditCardInput: Editable?) {
+      val isValid = validateCreditCard(creditCardInput?.toString())
+      submitButton.isEnabled = isValid
+
+    }
+
   }
 }

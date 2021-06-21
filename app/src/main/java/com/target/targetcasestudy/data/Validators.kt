@@ -27,8 +27,12 @@ The check digit (the last number of the card) is the amount that you would need 
  * @return true if a credit card number is believed to be valid,
  * otherwise false
  */
-fun validateCreditCard(creditCardNumber: String): Boolean {
-    return validCreditCardValues(creditCardNumber) && validCreditCardLength(creditCardNumber)
+fun validateCreditCard(creditCardNumber: String?): Boolean {
+    return if(creditCardNumber.isNullOrEmpty()) {
+        false
+    } else {
+        validCreditCardValues(creditCardNumber) && validCreditCardLength(creditCardNumber)
+    }
 }
 
 fun validCreditCardLength(creditCardNumber: String): Boolean {
@@ -67,6 +71,7 @@ fun multiplier(value: Char): Int {
         (digit * 2) - 9
     }
 }
+
 
 /*TODO Validate if all values are digits*/
 
